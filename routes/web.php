@@ -75,9 +75,10 @@ Route::get('/hasil-kuisioner', function() {
 });
 
 Route::get('/get-prediksi', function() {
-   $user = auth()->user();
-
-    return $user->makePrediksiKelulusan();
+    $user = auth()->user();
+    $hasilPrediksi = $user->makePrediksiKelulusan();
+    
+    return view('app.hasil-prediksi')->with('user', $user)->with('hasilPrediksi', $hasilPrediksi);
 });
 
 Auth::routes();

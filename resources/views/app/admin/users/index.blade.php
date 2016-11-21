@@ -1,7 +1,7 @@
-@extends ('layouts.app')
+@extends ('layouts.admin')
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-3">
                 @include('app.partials.sidebar-admin')
