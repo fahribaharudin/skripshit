@@ -52,8 +52,8 @@ class NBCClassifier
         $cp = [];
 
         foreach ($this->dokumenTest as $key => $value) {
-            $cp['P(' . $key . '|Tepat waktu)'] = ( 1 + $this->dokumenlearning->where('class', 'Lulus tepat waktu')->where($key, $this->dokumenTest->$key)->count()) / $this->n_dokumenLearningTepat;
-            $cp['P(' . $key . '|Terlambat)'] = ( 1 + $this->dokumenlearning->where('class', 'Tidak tepat waktu')->where($key, $this->dokumenTest->$key)->count()) / $this->n_dokumenLearningTerlambat;
+            $cp['P(' . $key . '|Tepat waktu)'] = round(( 1 + $this->dokumenlearning->where('class', 'Lulus tepat waktu')->where($key, $this->dokumenTest->$key)->count()) / $this->n_dokumenLearningTepat, 2);
+            $cp['P(' . $key . '|Terlambat)'] = round(( 1 + $this->dokumenlearning->where('class', 'Tidak tepat waktu')->where($key, $this->dokumenTest->$key)->count()) / $this->n_dokumenLearningTerlambat, 2);
         }
 
         return $cp;
@@ -70,8 +70,8 @@ class NBCClassifier
             if ($cp1 == 0) $cp1 = 1;
             if ($cp2 == 0) $cp2 = 1;
 
-            $cp1 = $cp1 * $cpAll['P(' . $key . '|Tepat waktu)'];
-            $cp2 = $cp2 * $cpAll['P(' . $key . '|Terlambat)'];
+            $cp1 = round($cp1, 2) * round($cpAll['P(' . $key . '|Tepat waktu)'], 2);
+            $cp2 = round($cp2, 2) * round($cpAll['P(' . $key . '|Terlambat)'], 2);
         }
 
         return [

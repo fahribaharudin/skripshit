@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware('guest');
 
 Route::get('/mulai', function() { return view('app.mulai'); });
 Route::post('/mulai', function() { $email =  request()->get('email'); return redirect()->to('/mulai/step-2')->with('email', $email); });
@@ -96,6 +96,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     Route::get('/', 'AdminController@getAdminDashboard');
     Route::get('/dokumen-learning', 'AdminController@indexDokumenLearning');
     Route::get('/users', 'AdminController@indexUsers');
+    Route::get('/users/{user_id}/edit', 'AdminController@editUsers');
 });
 
 Route::get('/demo', function() {

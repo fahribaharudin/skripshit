@@ -11,7 +11,7 @@
                     <form action="{{ url('/mulai') }}" method="POST">
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <input name="email" required type="text" class="form-control input-lg text-center" placeholder="Alamat Email">
+                            <input name="email" required type="email" class="form-control input-lg text-center" placeholder="Alamat Email">
                         </div>
                         <div class="form-group">
                             <button class="btn btn-lg btn-success form-control input-lg">Next</button>

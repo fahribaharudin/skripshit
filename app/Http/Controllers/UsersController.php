@@ -51,7 +51,8 @@ class UsersController extends Controller
     public function getHasilPrediksi($user_id)
     {
         $user = User::with('kuisioner')->where('id', $user_id)->first();
+        $hasilPrediksi = $user->makePrediksiKelulusan();
 
-        return $user->makePrediksiKelulusan();
+        return view('app.user.prediksi.hasil-prediksi')->with('user', $user)->with('hasilPrediksi', $hasilPrediksi);
     }
 }

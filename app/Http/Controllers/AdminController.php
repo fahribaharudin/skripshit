@@ -28,4 +28,11 @@ class AdminController extends Controller
         return view('app.admin.users.index')
             ->with('users', $users);
     }
+
+    public function editUsers($user_id)
+    {
+        $user = User::find($user_id);
+
+        return view('app.admin.users.edit')->with('user', $user);
+    }
 }

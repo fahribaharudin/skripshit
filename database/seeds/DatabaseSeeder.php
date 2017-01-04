@@ -36,6 +36,42 @@ class DatabaseSeeder extends Seeder
             $dataKuisioner[] = $dataMahasiswa;
         }
 
+        $faker = app()->make(Faker\Generator::class);
+
+        for ($i=0; $i<=15; $i++) {
+            $dataMahasiswa = new stdClass();
+            $dataMahasiswa->email = $faker->email;
+            $dataMahasiswa->potensi_lulus_tepat_waktu = 'Tidak';
+            $dataMahasiswa->jumlah_organisasi = rand(0, 1) == 1 ? '> 2' : '< 2';
+            $dataMahasiswa->waktu_berorganisasi_dalam_sehari = rand(0, 1) == 1 ? '> 6 jam / hari' : '< 6 jam / hari';
+            $dataMahasiswa->sudah_kp_atau_kpm = rand(0, 1) == 1 ? 'Belum' : 'Sudah';
+            $dataMahasiswa->event_organisasi_tiap_semester = rand(0, 1) == 1 ? 'Selalu ada' : 'Tidak selalu';
+            $dataMahasiswa->pernah_jadi_panitia = rand(0, 1) == 1 ? 'Sudah Pernah' : 'Belum Pernah';
+            $dataMahasiswa->mata_kuliah_belum_tuntas = rand(0, 1) == 1 ? 'Ada' : 'Tidak ada';
+            $dataMahasiswa->sks_cukup_untuk_kp_atau_kpm = rand(0, 1) == 1 ? 'Cukup' : 'Belum cukup';
+            $dataMahasiswa->ingin_lulus_tepat_waktu = rand(0, 1) == 1 ? 'Ya' : 'Tidak';
+            $dataMahasiswa->timestamp = $jawaban->timestamp;
+
+            $dataKuisioner[] = $dataMahasiswa;
+        }
+
+        for ($i=0; $i<=15; $i++) {
+            $dataMahasiswa = new stdClass();
+            $dataMahasiswa->email = $faker->email;
+            $dataMahasiswa->potensi_lulus_tepat_waktu = 'Ya';
+            $dataMahasiswa->jumlah_organisasi = rand(0, 1) == 1 ? '> 2' : '< 2';
+            $dataMahasiswa->waktu_berorganisasi_dalam_sehari = rand(0, 1) == 1 ? '> 6 jam / hari' : '< 6 jam / hari';
+            $dataMahasiswa->sudah_kp_atau_kpm = rand(0, 1) == 1 ? 'Belum' : 'Sudah';
+            $dataMahasiswa->event_organisasi_tiap_semester = rand(0, 1) == 1 ? 'Selalu ada' : 'Tidak selalu';
+            $dataMahasiswa->pernah_jadi_panitia = rand(0, 1) == 1 ? 'Sudah Pernah' : 'Belum Pernah';
+            $dataMahasiswa->mata_kuliah_belum_tuntas = rand(0, 1) == 1 ? 'Ada' : 'Tidak ada';
+            $dataMahasiswa->sks_cukup_untuk_kp_atau_kpm = rand(0, 1) == 1 ? 'Cukup' : 'Belum cukup';
+            $dataMahasiswa->ingin_lulus_tepat_waktu = rand(0, 1) == 1 ? 'Ya' : 'Tidak';
+            $dataMahasiswa->timestamp = $jawaban->timestamp;
+
+            $dataKuisioner[] = $dataMahasiswa;
+        }
+
         // save to db
         App\User::truncate();
         App\Role::truncate();
